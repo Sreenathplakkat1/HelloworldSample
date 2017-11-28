@@ -1,0 +1,11 @@
+pipeline
+{
+agent any
+stages {
+stage('GitHub Checking out') {
+steps{
+sh 'Checking out from github'
+}
+}
+}
+}
