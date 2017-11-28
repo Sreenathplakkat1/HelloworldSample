@@ -1,4 +1,3 @@
-I want to use following Pipeline script from git in jenkins
 
 #!groovy
 pipeline {
