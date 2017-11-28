@@ -5,17 +5,24 @@ pipeline {
         stage('Checking out from Github') {
             steps {
                 git credentialsId: 'b408f6fb-227b-45ce-8d35-79b293ec3420', url: 'git@github.com:Sreenathplakkat1/HelloworldSample.git'
-                echo 'Building..'
+                echo 'Checkout from Github..'
             }
         }
-        stage('Build') {
+        stage('Restore NugetPackages') {
             steps {
-                echo 'Building..'
+                bat 'C:\\Softwares/nuget.exe restore "C:\\Program Files (x86)\\Jenkins\\workspace\\DevopsLocal\\SampleApplication.sln"'
+                echo 'Restoring Nuget packages..'
             }
         }
-        stage('Test') {
+        stage('Build Solution') {
             steps {
-                echo 'Testing..'
+                bat "\"${tool 'MSBuild'}\" SampleApplication.sln /p:Configuration=Debug /p:VisualStudioVersion=14.0"
+                echo 'Build Solution..'
+            }
+        }
+         stage('Test') {
+            steps {
+                echo 'Selenium testing....'
             }
         }
         stage('Deploy') {
