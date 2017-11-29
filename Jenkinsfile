@@ -5,7 +5,7 @@ pipeline {
         
          stage('Displaying Parameters') {
             steps {
-              echo 'Displaying parameter ${Test}'
+              echo 'Displaying parameter ${params.Test}'
             }
         }
         stage('Checking out from Github') {
