@@ -11,10 +11,10 @@ parameters {
        
         stage('Added for testing')
         {
-            echo "MajorVe ${params.MajorVersion}"
-             echo "MinorVersion ${params.MinorVersion}"
-            echo "PatchVersion ${params.PatchVersion}"
-            echo "PrereleaseString ${params.PrereleaseString}"
+            print  "MajorVe ${params.MajorVersion}"
+            print  "MinorVersion ${params.MinorVersion}"
+            print  "PatchVersion ${params.PatchVersion}"
+            print  "PrereleaseString ${params.PrereleaseString}"
             
         }
         stage('Checking out from Github') {
