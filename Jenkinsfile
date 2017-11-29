@@ -3,7 +3,7 @@ pipeline {
 
     stages {
         
-         stage('Test') {
+         stage('Displaying Parameters') {
             steps {
               echo 'Displaying parameter ${Test}'
             }
