@@ -2,10 +2,7 @@ pipeline {
     agent any
 parameters {
      string(name: 'MajorVersion', defaultValue: '1', description: 'MajorVersion')
-     string(name: 'MinorVersion', defaultValue: '0', description: 'MinorVersion')
-     string(name: 'PatchVersion', defaultValue: '0', description: 'PatchVersion')
-     string(name: 'PrereleaseString', defaultValue: '0', description: 'PrereleaseString')
-     
+          
     }
     stages {
        
