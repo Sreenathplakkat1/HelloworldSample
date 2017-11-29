@@ -11,10 +11,12 @@ parameters {
        
         stage('Added for testing')
         {
+            steps {
             print  "MajorVe ${params.MajorVersion}"
             print  "MinorVersion ${params.MinorVersion}"
             print  "PatchVersion ${params.PatchVersion}"
             print  "PrereleaseString ${params.PrereleaseString}"
+        }
             
         }
         stage('Checking out from Github') {
