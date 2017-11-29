@@ -49,7 +49,8 @@ $pattern = \'\\[assembly: AssemblyVersion\\("(.*)"\\)\\]\'
         }
         stage('Commit Assembly Version'){
             steps{
-                bat 'git commit -am "Updated assembly"'
+               bat '''git commit -am "Updated assembly"
+               git push origin master'''
             }
         }
          stage('Test') {
