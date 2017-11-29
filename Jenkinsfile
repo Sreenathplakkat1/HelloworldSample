@@ -2,10 +2,21 @@ pipeline {
     agent any
 parameters {
      string(name: 'MajorVersion', defaultValue: '1', description: 'MajorVersion')
+     string(name: 'MinorVersion', defaultValue: '0', description: 'MinorVersion')
+     string(name: 'PatchVersion', defaultValue: '0', description: 'PatchVersion')
+     string(name: 'PrereleaseString', defaultValue: '0', description: 'PrereleaseString')
           
     }
     stages {
        
+        stage('Added for testing')
+        {
+            echo "MajorVe ${params.MajorVersion}"
+             echo "MinorVersion ${params.MinorVersion}"
+            echo "PatchVersion ${params.PatchVersion}"
+            echo "PrereleaseString ${params.PrereleaseString}"
+            
+        }
         stage('Checking out from Github') {
             steps {
                 git credentialsId: 'b408f6fb-227b-45ce-8d35-79b293ec3420', url: 'git@github.com:Sreenathplakkat1/HelloworldSample.git'
