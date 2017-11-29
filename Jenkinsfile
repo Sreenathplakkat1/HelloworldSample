@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+parameters {
+        string(MajorVersion: '1', MinorVersion: '0', PatchVersion: '0',PrereleaseString:'0')
+    }
     stages {
        
         stage('Checking out from Github') {
