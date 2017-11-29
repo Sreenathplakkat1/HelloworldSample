@@ -38,7 +38,7 @@ $pattern = \'\\[assembly: AssemblyVersion\\("(.*)"\\)\\]\'
         $_
     }
 } | Set-Content $path'''
-                echo 'Changed assembly version '+ $newVersion
+                echo 'Changed assembly version '
             }
         }
         stage('Build Solution') {
