@@ -9,17 +9,7 @@ parameters {
     }
     stages {
        
-        stage('Added for testing')
-        {
-            steps {
-            print  "MajorVersion ${params.MajorVersion}"
-            print  "MinorVersion ${params.MinorVersion}"
-            print  "PatchVersion ${params.PatchVersion}"
-            print  "PrereleaseString ${params.PrereleaseString}"
-        }
-            
-        }
-        stage('Checking out from Github') {
+       stage('Checking out from Github') {
             steps {
                 git credentialsId: 'b408f6fb-227b-45ce-8d35-79b293ec3420', url: 'git@github.com:Sreenathplakkat1/HelloworldSample.git'
                 echo 'Checkout from Github..'
@@ -55,6 +45,11 @@ $pattern = \'\\[assembly: AssemblyVersion\\("(.*)"\\)\\]\'
             steps {
                 bat "\"${tool 'MSBuild'}\" SampleApplication.sln /p:Configuration=Debug /p:VisualStudioVersion=14.0"
                 echo 'Build Solution..'
+            }
+        }
+        stage('Commit Assembly Version'){
+            steps{
+                bat 'git commit -am "Updated assembly"'
             }
         }
          stage('Test') {
