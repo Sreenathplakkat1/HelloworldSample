@@ -31,7 +31,7 @@ $pattern = \'\\[assembly: AssemblyVersion\\("(.*)"\\)\\]\'
         # We have found the matching line
         # Edit the version number and put back.
         $fileVersion = [version]$matches[1]
-        $newVersion = "{0}.{1}.{2}.{3}" -f params.MajorVersion, params.MinorVersion, params.BUILD_NUMBER, params.PrereleaseString
+        $newVersion = "{0}.{1}.{2}.{3}" -f ${params.MajorVersion}, ${params.MinorVersion}, ${params.BUILD_NUMBER}, ${params.PrereleaseString}
         \'[assembly: AssemblyVersion("{0}")]\' -f $newVersion
     } else {
         # Output line as is
