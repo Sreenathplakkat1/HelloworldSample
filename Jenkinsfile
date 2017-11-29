@@ -6,8 +6,7 @@ pipeline {
          stage('Displaying Parameters') {
             steps {
                print 'DEBUG: parameter isFoo = ' + params.Test
-                print 'Test: parameter ${params.Test}'
-              echo 'Displaying parameter ${params.Test}'
+               
             }
         }
         stage('Checking out from Github') {
@@ -20,6 +19,26 @@ pipeline {
             steps {
                 bat 'C:\\Softwares/nuget.exe restore "C:\\Program Files (x86)\\Jenkins\\workspace\\DevopsLocal\\SampleApplication.sln"'
                 echo 'Restoring Nuget packages..'
+            }
+        }
+        stage('Change Assembly Version')
+        {
+            steps{
+                powershell '''$path = "C:\\Program Files (x86)\\Jenkins\\workspace\\jenkins-pipeline-example2\\SampleApplication\\Properties\\AssemblyInfo.cs"
+$pattern = \'\\[assembly: AssemblyVersion\\("(.*)"\\)\\]\'
+(Get-Content $path) | ForEach-Object{
+    if($_ -match $pattern){
+        # We have found the matching line
+        # Edit the version number and put back.
+        $fileVersion = [version]$matches[1]
+        $newVersion = "{0}.{1}.{2}.{3}" -f $fileVersion.Major, $fileVersion.Minor, $fileVersion.Build, ($fileVersion.Revision + 1)
+        \'[assembly: AssemblyVersion("{0}")]\' -f $newVersion
+    } else {
+        # Output line as is
+        $_
+    }
+} | Set-Content $path'''
+                echo 'Changed assembly version '+ $newVersion
             }
         }
         stage('Build Solution') {
