@@ -5,6 +5,7 @@ pipeline {
         
          stage('Displaying Parameters') {
             steps {
+                 sh "isFoo is ${params.isFoo}"
               echo 'Displaying parameter ${params.Test}'
             }
         }
