@@ -53,7 +53,7 @@ $pattern = \'\\[assembly: AssemblyVersion\\("(.*)"\\)\\]\'
                 credentialsId: 'b408f6fb-227b-45ce-8d35-79b293ec3420'
                 bat '''git merge master
               git commit -am "Merged assembly changes to master"
-              git push origin master'''
+              git push '''
             }
         }
          stage('Test') {
