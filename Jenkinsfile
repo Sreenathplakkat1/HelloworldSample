@@ -50,9 +50,8 @@ $pattern = \'\\[assembly: AssemblyVersion\\("(.*)"\\)\\]\'
         stage('Commit Assembly Version'){
             steps{
                 git url: "ssh://git@github.com:Sreenathplakkat1/HelloworldSample.git",
-                credentialsId: 'b408f6fb-227b-45ce-8d35-79b293ec3420',
-                branch: 'master'
-              bat '''git merge master
+                credentialsId: 'b408f6fb-227b-45ce-8d35-79b293ec3420'
+                bat '''git merge master
               git commit -am "Merged assembly changes to master"
               git push origin master'''
             }
