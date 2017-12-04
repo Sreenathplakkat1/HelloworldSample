@@ -17,14 +17,14 @@ parameters {
         }
         stage('Restore NugetPackages') {
             steps {
-                bat 'C:\\Softwares/nuget.exe restore "C:\\Program Files (x86)\\Jenkins\\workspace\\DevopsLocal\\SampleApplication.sln"'
+                bat 'C:\\Softwares/nuget.exe restore "C:\\Jenkins\\workspace\\DevopsLocal\\SampleApplication.sln"'
                 echo 'Restoring Nuget packages..'
             }
         }
         stage('Change Assembly Version')
         {
             steps{
-                powershell '''$path = "C:\\Program Files (x86)\\Jenkins\\workspace\\jenkins-pipeline-example2\\SampleApplication\\Properties\\AssemblyInfo.cs"
+                powershell '''$path = "C:\\Jenkins\\workspace\\jenkins-pipeline-example2\\SampleApplication\\Properties\\AssemblyInfo.cs"
 $pattern = \'\\[assembly: AssemblyVersion\\("(.*)"\\)\\]\'
 (Get-Content $path) | ForEach-Object{
     if($_ -match $pattern){
